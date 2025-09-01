@@ -1,0 +1,43 @@
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>New Registration</title>
+            <link rel="stylesheet" href="login.css">
+        </head>
+        <body>
+           <!-- <div id="header-container"></div>-->
+           <div id="custom-alert" class="alert-modal">
+            <div class="alert-box">
+                <p id="alert-message"></p> 
+                <div id="alert-action-buttons">
+                    <button id="alert-ok">OK</button> 
+                </div>
+            </div>
+        </div>
+            <h2>New Registration</h2>
+            <div id="registration" class="modal">
+                <form class="modal-content animate" method="post">
+                    <div class="container">
+                        <label for="uname"><b>Username</b></label>
+                        <input type="text" id="username1" placeholder="Enter Username" name="uname" required>
+        
+                        <label for="email"><b>Email</b></label>
+                        <input type="email" id="email1" placeholder="Enter Email" name="email" required>
+        
+                        <label for="psw"><b>Password</b></label>
+                        <input type="password" id="password1" placeholder="Enter Password" name="psw" required>
+        
+                        <button type="submit">Register</button>
+                        <label>
+                            <input type="checkbox" checked="checked" name="remember"> Remember me
+                        </label>
+                    </div>
+                        <button type="button" onclick="window.location.href='login.html'" class="cancelbtn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+            <script src="login.js"></script>
+        </body>
+    </html>
+      

@@ -1,0 +1,29 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0"> 
+        <title>Edit Profile</title>
+        <link rel="stylesheet" href="edit-profile.css">
+        
+    </head>
+    <body>
+        <div id="header-container"></div>
+        <div class="form-container">
+            <h2>Profile</h2>
+            <form id="edit-profile-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+
+                <label for="emal">Email</label>
+                <input type="email" id="email" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password">
+
+                <button type="submit" class="edit-btn">Edit</button>
+                <button type="button" id="cancel-btn" class="edit-btn">Cancel</button>
+            </form>
+        </div>
+        <script src="edit-profile.js"></script>
+    </body>
+</html>

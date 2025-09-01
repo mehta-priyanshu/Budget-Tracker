@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width", initial-scale="1.0">
+    <title>Budget Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div id="header-container"></div>
+    <h1>Budget Tracker</h1>
+    <form id="expense-form">
+        <label for="appliances">Title:</label>
+        <input type="text" id="appliances" name="appliances" required><br><br>
+
+        <label for="expense">Amount:</label>
+        <input type="number" id="expense"name="expense" required><br><br>
+
+        <div class="container">
+            <label>Debit Type:</label>
+            <input type="radio" id="income" name="debit" value="Income" required>
+            <label for="income">Income</label>
+            <input type="radio" id="expenseType" name="debit" value="Expense" required>
+            <label for="expenseType">Expense</label>
+        </div>
+
+        <div class="action">
+            <label for="option">Choose a name: </label>
+            <select id="options" required>
+                <option value="">Select User</option>
+            </select>
+        </div> <br><br>
+       
+        <button type="submit" class="index">Add Amount</button>
+    </form>
+
+    <!--<h2>Expenses List</h2>
+    <ul id="expenses-list"></ul>-->
+    
+    <script src="index.js"></script>
+</body>
+</html>

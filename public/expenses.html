@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenses</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="header-container"></div>
+    <h1>Expenses List</h1>
+
+    <div>
+        <input type="search" id="search-input" placeholder="">
+        <button id="search-button">Search</button>
+    </div><br>
+
+    <label for="transaction-type"><b>Select Type:</b></label>
+    <select id="transaction-type">
+        <option value="all">All</option>
+        <option value="Income">Income</option>
+        <option value="Expense">Expense</option>
+    </select><br><br>
+
+    <div>
+        <input type="date" id="fromDate" />
+        <input type="date" id="toDate" />
+        <button id="searchButton">Search</button>
+    </div> <br>
+
+    <div>
+        <button id="todayButton">Today's Transaction</button>
+    </div><br>
+    
+    <div class="income">
+        <h3>Total Income: <span id="totalincome">0</span></h3>
+    </div>
+    <div class="expense">
+        <h3>Total Expense: <span id="totalexpense">0</span></h3>
+    </div>
+    <div class="expns">
+        <h3>Today's Expense: <span id="todayexpense">0</span></h3>
+    </div>
+    <div class="pending">
+        <h3>Pending: <span id="pendingAmount"></span></h3>
+    </div>
+
+    <!--<button id="logout-btn">LogOut</button>-->
+    <table id="expensesTable">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Title</th>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="DataTableBody">
+            <!-- Dynamic data will be inserted here --> 
+        </tbody>
+    </table>
+    
+    <div id="edit-form" class="container">
+        <div class="edit-box">
+        <h2 style="color: #4CAF50;">Edit Item</h2>
+        <form class="form-container">
+        <label class="form-label" for="edit-appliances">Title:</label>
+        <input class="form-input" type="text" id="edit-appliances" /><br/>
+
+        <label class="form-label" for="edit-options">Name:</label>
+        <input class="form-input" type="text" id="edit-options"/><br/>
+
+        <label class="form-label"  for="edit-expense">Amount:</label>
+        <input class="form-input" type="number" id="edit-expense" /><br/>
+        
+        <label class="form-label"  for="edit-debit">Debit:</label>
+        <input class="form-input" type="text" id="edit-debit" /><br/>
+        
+        <label class="form-label"  for="edit-date">Date:</label>
+        <input class="form-input" type="date" id="edit-date" /><br/>
+        
+        <button class="btn-submit" type="submit" id="save-changes-button">Submit</button>
+        <button class="btn-cancel" type="cancel" id="cancel-edit-button">Cancel</button> 
+        </form>
+        </div>
+    </div>
+</body> 
+</html>
