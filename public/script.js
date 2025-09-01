@@ -109,6 +109,7 @@ let allData = []; // Store fetched data globally for search functionality
             if (data.length > 0) {
                 data.forEach((item, index) => {
                     const row = document.createElement("tr");
+                    row.setAttribute('data-id', item._id);
                     row.innerHTML = `
                         <td>${index + 1}</td>
                         <td>${item.appliances}</td>
@@ -121,7 +122,7 @@ let allData = []; // Store fetched data globally for search functionality
                             day: "numeric",
                         })}</td>
                         <td class="action-buttons">
-                        <button class="edit-button" onclick="editRow()">Edit</button>
+                        <button class="edit-button">Edit</button>
                         <button class="delete-button">Delete</button>
                         </td>
                     `;
@@ -310,7 +311,7 @@ document.querySelector('tbody').addEventListener('click', function(event) {
     if (event.target.classList.contains('edit-button')) {
         const row = event.target.closest('tr');
         const itemId = row.getAttribute('data-id'); 
-
+         if (!itemId) return console.error('Data Id not found for edit');
         // Fetch the current data from the server or use the row data
         fetch(`/api/expenses/${itemId}`)
             .then(response => response.json())
