@@ -134,7 +134,7 @@ app.get('/expenses.html', verifyToken, (req, res) => {
 });
 
 app.get('/edit-profile.html', verifyToken, (req, res) => {
-    res.sendFile(path.join(__dirname, '../public', edit-profile.html));
+    res.sendFile(path.join(__dirname, '../public', 'edit-profile.html'));
 });
 
 //Change password
