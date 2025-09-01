@@ -284,7 +284,7 @@ document.querySelector('tbody').addEventListener('click', function(event) {
 
 function deleteDataFromAPI(itemId, row) {
     console.log(itemId);
-    console.log(`Attempting to delete item with Id: $ {itemId}`);
+    console.log(`Attempting to delete item with Id: ${itemId}`);
     fetch(`/api/expenses/${itemId}`, {
         method: `DELETE`
     })
