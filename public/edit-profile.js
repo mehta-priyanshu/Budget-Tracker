@@ -63,7 +63,7 @@ async function fetchUserData() {
             return;
         }
 
-        const response = await fetch("http://budget-tracker-7bb4.onrender.com/get-user", {
+        const response = await fetch("https://budget-tracker-7bb4.onrender.com/get-user", {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -105,7 +105,7 @@ document.getElementById('edit-profile-form').addEventListener('submit', async (e
     const password = document.getElementById('password').value;
 
     try {
-        const response = await fetch('http://budget-tracker-7bb4.onrender.com/api/update-user', {
+        const response = await fetch('https://budget-tracker-7bb4.onrender.com/api/update-user', {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, name, password })
