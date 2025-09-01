@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const remember = document.getElementById('remember').checked;
 
             try {
-                const response = await fetch('https://budget-tracker-7bb4.onrender/api/login', {
+                const response = await fetch('https://budget-tracker-7bb4.onrender.com/api/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, password }),
