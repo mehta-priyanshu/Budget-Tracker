@@ -54,7 +54,7 @@ const tokn = localStorage.getItem('token');
             window.location.href ='login.html;'
         }
 
-        async function loadUsers() {
+        /*async function loadUsers() {
              try {
                 const response = await fetch('/get-users');
                 const data = await response.json();
@@ -75,7 +75,7 @@ const tokn = localStorage.getItem('token');
             } catch (error) {
                 console.error("Error loading users:", error);
             }
-        }
+        }*/
 
         // Run function when page loads
         document.addEventListener('DOMContentLoaded', loadUsers);
