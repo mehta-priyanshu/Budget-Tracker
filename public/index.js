@@ -116,9 +116,9 @@ const tokn = localStorage.getItem('token');
                 const appliances = document.getElementById('appliances').value;
                 const expense = document.getElementById('expense').value;
                 const debit = document.querySelector('input[name="debit"]:checked')?.value;
-                const options = document.getElementById('options').value;
+                //const options = document.getElementById('options').value;
 
-                if (!appliances || !expense || !debit ||!options ) {
+                if (!appliances || !expense || !debit /*||!options*/ ) {
                     showAlert("All fields are required.");
                     return;
                 }
@@ -126,7 +126,7 @@ const tokn = localStorage.getItem('token');
                 const response = await fetch('/add-expense', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ appliances, expense, debit, options }),
+                    body: JSON.stringify({ appliances, expense, debit, /*options*/ }),
                 });
 
                 const data = await response.json();
