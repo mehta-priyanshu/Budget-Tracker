@@ -78,7 +78,7 @@ const tokn = localStorage.getItem('token');
         }*/
 
         // Run function when page loads
-        document.addEventListener('DOMContentLoaded', loadUsers);
+        //document.addEventListener('DOMContentLoaded', loadUsers);
 
         function isTokenExpired(token) {
             try {
