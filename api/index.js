@@ -70,7 +70,7 @@ app.post('/register', async(req, res) => {
 });
 
 //Get the users name in select field
-app.get('/get-users', async (req, res) => {
+/*app.get('/get-users', async (req, res) => {
     try {
         const users = await db.collection('users').find({}, { projection: { _id: 0, name: 1 } }).toArray();
         res.json(users);
@@ -78,7 +78,7 @@ app.get('/get-users', async (req, res) => {
         console.error("Error fetching users:", error);
         res.status(500).json({ message: "Internal Server Error" });
     }
-});
+});*/
 
 //Login user
 app.post('/api/login', async (req, res) => {
@@ -396,7 +396,6 @@ app.use((req, res) => {
 });
 
 app.listen(port, async () => {
-    //await connectDB();  // Ensure MongoDB is connected before starting the server
     console.log(`Server is running at http://localhost:${port}`);
 });
 
