@@ -138,7 +138,7 @@ let allData = []; // Store fetched data globally for search functionality
             const query = document.getElementById("search-input").value.toLowerCase();
             const filteredData = allData.filter(item => {
                 const appliances = item.appliances.toLowerCase();
-                const options = item.options.toLowerCase();
+                //const options = item.options.toLowerCase();
                 const expense = item.expense.toString().toLowerCase();
                 const date = new Date(item.date).toLocaleDateString("en-IN", {
                     year: "numeric",
@@ -147,7 +147,7 @@ let allData = []; // Store fetched data globally for search functionality
                 }).toLowerCase();
                 return (
                 appliances.includes(query) ||
-                options.includes(query) ||
+                //options.includes(query) ||
                 expense.includes(query) || 
                 date.includes(query)
                 );
