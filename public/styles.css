@@ -155,7 +155,7 @@ button:hover {
         flex: unset;
         margin: 0 5px; 
         min-width: auto;
-        gap: 5px;
+        gap: 10px;
     }
     table {
         display: block;
