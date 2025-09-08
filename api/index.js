@@ -236,6 +236,10 @@ app.post('/add-expense', async(req,res) =>{
         if(!appliances || !expense || !debit ) {
             return res.status(400).json({message: "appliances expense and debit can't be empty"});
         }
+        const token = req.headers['authorization']?.split(' ')[1];
+        if (!token) return res.status(401).json({ message: "Unauthorized" });
+
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
         const expenseDate = date ? new Date(date) : new Date();
         const result = await expensesCollection.insertOne
         ({appliances,
