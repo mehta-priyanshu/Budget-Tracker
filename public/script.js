@@ -114,7 +114,7 @@ let allData = []; // Store fetched data globally for search functionality
                     row.innerHTML = `
                         <td>${index + 1}</td>
                         <td>${item.appliances}</td>
-                        /*<td>${item.options}</td>*/
+                        <td>${item.options}</td>
                         <td>${item.expense}</td>
                         <td>${item.debit}</td>
                         <td>${new Date(item.date).toLocaleDateString("en-IN", {
@@ -199,7 +199,7 @@ const fetchData = (type = 'all', fromDate = '', toDate = '') => {
                     <tr data-id="${expense._id}">
                         <td>${index + 1}</td>
                         <td>${expense.appliances}</td>
-                        /*<td>${expense.options}</td>*/
+                        <td>${expense.options}</td>
                         <td>${expense.expense}</td>
                         <td>${expense.debit}</td>
                         <td>${new Date(expense.date).toLocaleDateString()}</td>
