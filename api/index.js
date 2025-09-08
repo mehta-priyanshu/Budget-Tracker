@@ -231,7 +231,7 @@ app.put('/api/update-user', async (req, res) => {
 
 app.post('/add-expense', async(req,res) =>{
     try{
-        const{appliances, expense, date, debit, options} = req.body;
+        const{appliances, expense, date, debit} = req.body;
 
         if(!appliances || !expense || !debit ) {
             return res.status(400).json({message: "appliances expense and debit can't be empty"});
@@ -245,8 +245,9 @@ app.post('/add-expense', async(req,res) =>{
         ({appliances,
             expense,
             debit, 
-            options,
-            date: expenseDate});
+            date: expenseDate,
+        userId: decoded.userId
+    });
         res.json ({message: 'Expense added successfully!',
         insertedId: result.insertedId
     });
