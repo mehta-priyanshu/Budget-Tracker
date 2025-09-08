@@ -21,6 +21,8 @@ table {
     border-collapse: collapse;
     margin-top: 20px;
     background-color: white;
+    table-layout: auto;
+    word-wrap: break-word;
 }
 
 th, td {
@@ -43,9 +45,11 @@ tbody tr:hover{
 
 input {
     width: 300px;
+    max-width: 100%;
     padding: 10px;
     font-size: 16px;
     margin-right: 10px;
+    box-sizing: border-box;
 }
 
 button {
@@ -61,6 +65,7 @@ button {
 button:hover {
     background-color: #8cd8f2;
 }
+
 .action-buttons button {
     display: inline-block;
     margin: 5px;
@@ -68,6 +73,7 @@ button:hover {
     border: none;
     cursor: pointer;
 }
+
 .edit-button {
     background-color: #4CAF50;
     color: black;
@@ -138,3 +144,52 @@ button:hover {
     background-color: #8cd8f2;
 }
 
+/* ✅ Responsive for small screens */
+@media screen and (max-width: 768px) {
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border: 0;
+    }
+
+    table thead {
+        display: none; /* Hide header on mobile */
+    }
+
+    table tbody tr {
+        display: block;
+        margin-bottom: 15px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    table tbody td {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px;
+        border: none;
+        border-bottom: 1px solid #eee;
+    }
+
+    table tbody td:last-child {
+        border-bottom: none;
+    }
+
+    table tbody td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #04AA6D;
+        flex: 1;
+        text-align: left;
+        margin-right: 10px;
+    }
+
+    input, button, select {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

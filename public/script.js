@@ -197,17 +197,16 @@ const fetchData = (type = 'all', fromDate = '', toDate = '') => {
 
                 const row = `
                     <tr data-id="${expense._id}">
-                        <td>${index + 1}</td>
-                        <td>${expense.appliances}</td>
-                        <td>${expense.options}</td>
-                        <td>${expense.expense}</td>
-                        <td>${expense.debit}</td>
-                        <td>${new Date(expense.date).toLocaleDateString()}</td>
-                        <td class="action-buttons">
+                        <td data-label="S.No">${index + 1}</td>
+                        <td data-label="Title">${expense.appliances}</td>
+                        <td data-label="Amount">${expense.expense}</td>
+                        <td data-label="Type">${expense.debit}</td>
+                        <td data-label="Date">${new Date(expense.date).toLocaleDateString()}</td>
+                        <td data-label="action-buttons">
                             <button class="edit-button">Edit</button>
                             <button class="delete-button">Delete</button>
                         </td>
-                    </tr>
+                    </tr> 
                 `;
                 tbody.innerHTML += row;
             });
