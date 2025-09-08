@@ -122,10 +122,19 @@ const tokn = localStorage.getItem('token');
                     showAlert("All fields are required.");
                     return;
                 }
+                const token = localStorage.getItem('token');
+                if(!token) {
+                    showAlert("Unautohorized! Please login.");
+                    window.location.href = 'Login.html';
+                    return;
+                }
                 try {
                 const response = await fetch('/add-expense', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}` 
+                    },
                     body: JSON.stringify({ appliances, expense, debit, /*options*/ }),
                 });
 
