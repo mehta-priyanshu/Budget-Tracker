@@ -146,6 +146,17 @@ button:hover {
 
 /* ✅ Responsive for small screens */
 @media screen and (max-width: 768px) {
+    .action-buttons {
+        display: flex;
+        gap: 10px;   /* Adds space between Edit and Delete */
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .action-buttons button {
+        flex: 1; /* Make both buttons take equal width */
+        min-width: 100px;
+    }
     table {
         display: block;
         width: 100%;
