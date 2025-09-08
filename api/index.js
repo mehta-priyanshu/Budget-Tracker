@@ -257,6 +257,13 @@ app.get('/api/expenses', async (req, res) => {
         const { type, fromDate, toDate } = req.query; 
         let filter = {};
         //console.log('Received fromDate:', fromDate, 'toDate:', toDate);
+        const token = req.headers['authorization']?.split(' ')[1];
+        if (!token) {
+            return res.status(401).json({ success: false, message: 'Unauthorized' })
+        };
+
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        filter.userId = decoded.userId; 
 
         if(type && type !== 'all') {
             filter.debit = type;
@@ -347,7 +354,16 @@ app.delete('/api/expenses/:id', async (req, res) => {
 app.get('/api/expenses/:id', async (req, res) =>{
     const id = req.params.id;
     try {
-    const expense = await expensesCollection.findOne({_id: new ObjectId(id)});
+        const token = req.headers['authorization']?.split(' ')[1];
+        if (!token) {
+            return res.status(401).json({ success: false, message: 'Unauthorized' }) 
+        };
+
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const expense = await expensesCollection.findOne({
+            _id: new ObjectId(id),
+            userId: decoded.userId
+        });
     
     if(expense) {
         console.log('Expense data:', expense);
@@ -364,7 +380,13 @@ app.get('/api/expenses/:id', async (req, res) =>{
 //Pending amount
 app.get('/api/expense', async(req, res) => {
     try{
-        const expenses = await expensesCollection.find({}).toArray();
+        const token = req.headers['authorization']?.split(' ')[1];
+        if (!token) {
+            return res.status(401).json({ success: false, message: 'Unauthorized' })
+        };
+
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const expenses = await expensesCollection.find({userId: decoded.userId}).toArray();
 
         const totalIncome = expenses
         .filter(item =>item.debit === 'Income')

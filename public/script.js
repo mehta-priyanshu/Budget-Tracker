@@ -21,7 +21,7 @@ async function loadHeader() {
         // Load header.js script dynamically AFTER the header is inserted
         loadHeaderScript();
     } catch (error) {
-        //console.error("Error loading header:", error);
+        console.error("Error loading header:", error);
     }
 }
 
@@ -33,7 +33,7 @@ function loadHeaderCSS() {
         document.head.appendChild(link);
         //console.log("Header CSS Loaded");
     }
-}
+}   
 
 // Function to load header.js dynamically
 function loadHeaderScript() {
@@ -88,6 +88,7 @@ let allData = []; // Store fetched data globally for search functionality
         // Fetch data from the API
         const req = new XMLHttpRequest();
         req.open("GET", "/api/expenses", true);
+        req.setRequestHeader("Authorization", `Bearer ${token}`); // ✅ add token
         req.send();
 
         req.onreadystatechange = function () {
@@ -162,7 +163,9 @@ const fetchData = (type = 'all', fromDate = '', toDate = '') => {
         query += `&fromDate=${fromDate}&toDate=${toDate}`;
     }
 
-    fetch(`/api/expenses${query}`)
+    fetch(`/api/expenses${query}`,{
+        headers: {'Authorization': `Bearer ${token}`}, //Add token
+    })
     .then((response) => response.json())
     .then((data) => {
         const tbody = document.querySelector('#DataTableBody');
@@ -246,7 +249,9 @@ document.getElementById('todayButton').addEventListener('click', () => {
 fetchData();
 
 const fetchAndDisplayPendingAmount = () =>{
-    fetch ('/api/expense')
+    fetch ('/api/expense', {
+        headers: {'Authorization': `Bearer ${token}`}, //Add token
+    })
     .then((response) => response.json())
     .then((data) => {
         //console.log('API Response:', data);
@@ -287,7 +292,8 @@ function deleteDataFromAPI(itemId, row) {
     console.log(itemId);
     console.log(`Attempting to delete item with Id: ${itemId}`);
     fetch(`/api/expenses/${itemId}`, {
-        method: `DELETE`
+        method: `DELETE`,
+        headers: {'Authorization': `Bearer ${token}`}, //Add token
     })
     .then(response => {
         console.log(`Response status: ${response.status}`);
@@ -313,7 +319,9 @@ document.querySelector('tbody').addEventListener('click', function(event) {
         const itemId = row.getAttribute('data-id'); 
          if (!itemId) return console.error('Data Id not found for edit');
         // Fetch the current data from the server or use the row data
-        fetch(`/api/expenses/${itemId}`)
+        fetch(`/api/expenses/${itemId}`,{
+            headers: {'Authorization': `Bearer ${token}`}, //Add token
+        })
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
@@ -358,6 +366,7 @@ document.getElementById('save-changes-button').addEventListener('click', functio
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
+            'Authorization' : `Bearer ${token}` //Add token
         },
         body: JSON.stringify(updatedData),
     })
