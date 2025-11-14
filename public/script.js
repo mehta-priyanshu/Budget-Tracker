@@ -114,7 +114,6 @@ let allData = []; // Store fetched data globally for search functionality
                     row.innerHTML = `
                         <td>${index + 1}</td>
                         <td>${item.appliances}</td>
-                        <td>${item.options}</td>
                         <td>${item.expense}</td>
                         <td>${item.debit}</td>
                         <td>${new Date(item.date).toLocaleDateString("en-IN", {
@@ -216,7 +215,7 @@ const fetchData = (type = 'all', fromDate = '', toDate = '') => {
             totalexpensespan.textContent = totalexpense.toFixed(2);
             todayexpensespan.textContent = todayexpense.toFixed(2);
         } else {
-            tbody.innerHTML = '<tr><td colspan="6">No data found</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="5">No data found</td></tr>';
             totalexpensespan.textContent = 0;
             totalincomespan.textContent = 0;
             todayexpensespan.textContent = 0;
@@ -327,7 +326,6 @@ document.querySelector('tbody').addEventListener('click', function(event) {
                     // Fill the form with the current data
                     const item = data.data;
                     document.getElementById('edit-appliances').value = item.appliances;
-                    document.getElementById('edit-options').value = item.options;
                     document.getElementById('edit-expense').value = item.expense;
                     document.getElementById('edit-debit').value = item.debit;
                     document.getElementById('edit-date').value = new Date(item.date).toISOString().split('T')[0];
@@ -346,7 +344,6 @@ document.querySelector('tbody').addEventListener('click', function(event) {
 // Event listener for saving changes
 document.getElementById('save-changes-button').addEventListener('click', function() {
     const appliances = document.getElementById('edit-appliances').value;
-    const options = document.getElementById('edit-options').value;
     const expense = document.getElementById('edit-expense').value;
     const debit = document.getElementById('edit-debit').value;
     const date = document.getElementById('edit-date').value;
@@ -354,7 +351,6 @@ document.getElementById('save-changes-button').addEventListener('click', functio
     // Prepare the updated data
     const updatedData = {
         appliances,
-        options,
         expense,
         debit,
         date,
@@ -375,15 +371,13 @@ document.getElementById('save-changes-button').addEventListener('click', functio
             // Update the row in the table
             const row = document.querySelector(`tr[data-id="${currentItemId}"]`);
             row.cells[1].textContent = appliances;
-            row.cells[2].textContent = options;
-            row.cells[3].textContent = expense;
-            row.cells[4].textContent = debit;
-            row.cells[5].textContent = new Date(date).toLocaleDateString();
+            row.cells[2].textContent = expense;
+            row.cells[3].textContent = debit;
+            row.cells[4].textContent = new Date(date).toLocaleDateString();
 
             // Hide the edit form and reset the form fields
             document.getElementById('edit-form').style.display = 'none';
             document.getElementById('edit-appliances').value = '';
-            document.getElementById('edit-options').value = '';
             document.getElementById('edit-expense').value = '';
             document.getElementById('edit-debit').value = '';
             document.getElementById('edit-date').value = '';
@@ -403,7 +397,6 @@ function togglePopup() {
 document.getElementById('cancel-edit-button').addEventListener('click', function() {
     document.getElementById('edit-form').style.display = 'none';
     document.getElementById('edit-appliances').value = '';
-    document.getElementById('edit-options').value = '';
     document.getElementById('edit-expense').value = '';
     document.getElementById('edit-debit').value = '';
     document.getElementById('edit-date').value = '';

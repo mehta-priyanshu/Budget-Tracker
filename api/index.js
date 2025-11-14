@@ -241,13 +241,13 @@ app.post('/add-expense', async(req,res) =>{
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         const expenseDate = date ? new Date(date) : new Date();
-        const result = await expensesCollection.insertOne
-        ({appliances,
+        const result = await expensesCollection.insertOne({
+            appliances,
             expense,
             debit, 
             date: expenseDate,
-        userId: decoded.userId
-    });
+            userId: decoded.userId
+        });
         res.json ({message: 'Expense added successfully!',
         insertedId: result.insertedId
     });
@@ -303,11 +303,10 @@ app.get('/api/expenses', async (req, res) => {
 app.put('/api/expenses/:id', async (req, res) => {
     try{
         const { id } = req.params;
-        const {appliances, expense, debit, date, options} = req.body;
+        const {appliances, expense, debit, date} = req.body;
 
         const updatedField = {
             appliances,
-            options,
             expense,
             debit
         };
